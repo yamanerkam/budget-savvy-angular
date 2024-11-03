@@ -1,11 +1,32 @@
-<p-sidebar [(visible)]="sidebarVisible" >
-    <h3>Sidebar</h3>
-    <p>
-        Lorem ipsum dolor sit amet...
-    </p>
-</p-sidebar>
-<p-button (onClick)="toggleSidebar()" icon="pi pi-arrow-right" />
-
-<router-outlet>
-
-</router-outlet>
+<div class="container">
+    <div class="sidebar">
+      <h3 class="menu-title">Main menu</h3>
+      <div class="menu-item active">
+        <i class="pi pi-home"></i> Main Page
+      </div>
+      <div class="menu-item">
+        <i class="pi pi-plus-circle"></i> Income Tracker
+      </div>
+      <div class="menu-item ">
+        <i class="pi pi-check-square"></i> Expense Tracker
+      </div>
+      <div class="menu-item">
+        <i class="pi pi-sun"></i> Tax Calculator
+      </div>
+      <div class="menu-item">
+        <i class="pi pi-briefcase"></i> Budget Planner
+      </div>
+      <div class="menu-item logout">
+        <i class="pi pi-sign-out"></i> Log out
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="top">
+        <h2>Good evening, Dear Visitor!</h2>
+      </div>
+      <div class="content">
+      </div>
+    </div>
+  </div>
+  
+  
