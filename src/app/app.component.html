@@ -4,19 +4,19 @@
   <div class="container">
     <div class="sidebar">
       <h3 class="menu-title">Main menu</h3>
-      <div routerLink="" class="menu-item active">
+      <div (click)="changeTab('')" routerLink="" [ngClass]="{'menu-item': true, 'active': activeTab === ''}">
         <i  class="pi pi-home"></i> Main Page
       </div>
-      <div routerLink="income-tracker" class="menu-item">
+      <div (click)="changeTab('income')" routerLink="income-tracker" [ngClass]="{'menu-item': true, 'active': activeTab === 'income'}">
         <i class="pi pi-plus-circle"></i> Income Tracker
       </div>
-      <div routerLink="expense-tracker" class="menu-item">
+      <div (click)="changeTab('expense')" routerLink="expense-tracker"  [ngClass]="{'menu-item': true, 'active': activeTab === 'expense'}">
         <i class="pi pi-check-square"></i> Expense Tracker
       </div>
-      <div routerLink="tax-calculator" class="menu-item">
+      <div (click)="changeTab('tax')" routerLink="tax-calculator" [ngClass]="{'menu-item': true, 'active': activeTab === 'tax'}">
         <i class="pi pi-sun"></i> Tax Calculator
       </div>
-      <div routerLink="budget-planner" class="menu-item">
+      <div (click)="changeTab('budget')" routerLink="budget-planner" [ngClass]="{'menu-item': true, 'active': activeTab === 'budget'}">
         <i class="pi pi-briefcase"></i> Budget Planner
       </div>
       <div class="menu-item logout">

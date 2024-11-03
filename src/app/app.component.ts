@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { MenubarModule } from 'primeng/menubar';
@@ -7,7 +9,7 @@ import { MenubarModule } from 'primeng/menubar';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ButtonModule,SidebarModule,MenubarModule,RouterLink
+  imports: [RouterOutlet, ButtonModule,SidebarModule,MenubarModule,RouterLink,CommonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -17,7 +19,7 @@ export class AppComponent {
   sidebarVisible : boolean = true;
   time : string = this.getTimeOfDay(new Date())
   userName : string = 'kam'.toLocaleUpperCase();
-  
+  activeTab = ''
   
   getTimeOfDay(time : Date) {
     const hour = time.getHours();
@@ -30,6 +32,10 @@ export class AppComponent {
     } else {
         return "Night";
     }
+}
+
+changeTab(newTab:string){
+  this.activeTab = newTab;
 }
 
 }
