@@ -9,33 +9,33 @@ import { MenubarModule } from 'primeng/menubar';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ButtonModule,SidebarModule,MenubarModule,RouterLink,CommonModule
+  imports: [RouterOutlet, ButtonModule, SidebarModule, MenubarModule, RouterLink, CommonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'budget-savvy';
-  sidebarVisible : boolean = true;
-  time : string = this.getTimeOfDay(new Date())
-  userName : string = 'kam'.toLocaleUpperCase();
+  sidebarVisible: boolean = true;
+  time: string = this.getTimeOfDay(new Date())
+  userName: string = 'kam'.toLocaleUpperCase();
   activeTab = ''
-  
-  getTimeOfDay(time : Date) {
+
+  getTimeOfDay(time: Date) {
     const hour = time.getHours();
     if (hour >= 5 && hour < 12) {
-        return "Morning";
+      return "Morning";
     } else if (hour >= 12 && hour < 17) {
-        return "Afternoon";
+      return "Afternoon";
     } else if (hour >= 17 && hour < 21) {
-        return "Evening";
+      return "Evening";
     } else {
-        return "Night";
+      return "Night";
     }
-}
+  }
 
-changeTab(newTab:string){
-  this.activeTab = newTab;
-}
+  changeTab(newTab: string) {
+    this.activeTab = newTab;
+  }
 
 }
