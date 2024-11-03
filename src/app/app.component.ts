@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { MenubarModule } from 'primeng/menubar';
@@ -7,7 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ButtonModule,SidebarModule,MenubarModule
+  imports: [RouterOutlet, ButtonModule,SidebarModule,MenubarModule,RouterLink
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
