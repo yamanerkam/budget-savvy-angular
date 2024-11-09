@@ -1,1 +1,26 @@
-<p>budget-planner works!</p>
+<div class="budget-planner-wrapper">
+    <div class="options">
+        <p-button (click)="changeTab('Needs')" class="opt-btn" label="Needs"></p-button>
+        <p-button (click)="changeTab('Wants')" class="opt-btn" label="Wants"></p-button>
+        <p-button (click)="changeTab('Savings')" class="opt-btn" label="Savings"></p-button>
+        <p-button (click)="changeTab('Total')" class="opt-btn" label="Total"></p-button>
+    </div>
+    <div class="budget-area">
+        <div *ngIf="chosenTab=='Needs'">
+            <p-inputNumber (onInput)="calculateTotalSpent()" placeholder="Rent" [(ngModel)]="rent"></p-inputNumber>
+            <p-inputNumber (onInput)="calculateTotalSpent()" placeholder="Groceries" [(ngModel)]="groceries"></p-inputNumber>
+        </div>
+        <div *ngIf="chosenTab=='Wants'">
+            <p-inputNumber placeholder="Shopping" [(ngModel)]="shopping"></p-inputNumber>
+            <p-inputNumber placeholder="Travel" [(ngModel)]="travel"></p-inputNumber>
+        </div>
+        <div *ngIf="chosenTab=='Savings'">
+            savings
+        </div>
+        <div *ngIf="chosenTab=='Total'">
+            total
+        </div>
+        <p-button *ngIf="chosenTab !='Total'" label=" Save {{chosenTab}}"></p-button>
+        <span> Total spent on {{chosenTab}} is {{totalSpent}} $ </span>
+    </div>
+</div>

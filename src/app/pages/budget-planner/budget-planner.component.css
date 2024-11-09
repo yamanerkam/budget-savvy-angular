@@ -1,0 +1,27 @@
+.budget-planner-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.options {
+    background-color: grey;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+    padding: 20px;
+    border: 1px blue solid;
+    border-radius: 10px;
+}
+
+.budget-area {
+    height: fit-content;
+    width: 100%;
+    background-color: grey;
+}
