@@ -7,8 +7,8 @@
     </div>
     <div class="budget-area">
         <div *ngIf="chosenTab=='Needs'">
-            <p-inputNumber (onInput)="calculateTotalSpent()" placeholder="Rent" [(ngModel)]="rent"></p-inputNumber>
-            <p-inputNumber (onInput)="calculateTotalSpent()" placeholder="Groceries" [(ngModel)]="groceries"></p-inputNumber>
+            <p-inputNumber [(ngModel)]="rent" (ngModelChange)="calculateTotalSpent()" placeholder="Rent" ></p-inputNumber>
+            <p-inputNumber [(ngModel)]="groceries" (ngModelChange)="calculateTotalSpent()" placeholder="Groceries" ></p-inputNumber>
         </div>
         <div *ngIf="chosenTab=='Wants'">
             <p-inputNumber placeholder="Shopping" [(ngModel)]="shopping"></p-inputNumber>
