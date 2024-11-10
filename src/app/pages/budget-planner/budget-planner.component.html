@@ -19,7 +19,7 @@
             <p-inputNumber placeholder="Emergency Savings" [(ngModel)]="emergency" (ngModelChange)="calculateTotalSpent('Savings')"></p-inputNumber>
         </div>
         <div *ngIf="chosenTab=='Total'">
-            total
+            <span> Total spent is {{totalSpent}} $ </span>
         </div>
         <div *ngIf="chosenTab !='Total'" class="result">
             <p-button  label=" Save {{chosenTab}}"></p-button>

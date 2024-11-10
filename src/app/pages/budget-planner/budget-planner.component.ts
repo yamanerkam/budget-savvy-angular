@@ -30,6 +30,7 @@ export class BudgetPlannerComponent {
     Needs: () => (this.rent ?? 0) + (this.groceries ?? 0),
     Wants: () => (this.shopping ?? 0) + (this.travel ?? 0),
     Savings: () => (this.education ?? 0) + (this.emergency ?? 0),
+    Total: () => (this.rent ?? 0) + (this.groceries ?? 0) + (this.shopping ?? 0) + (this.travel ?? 0) + (this.education ?? 0) + (this.emergency ?? 0)
   };
 
   calculateTotalSpent(tab: string) {
