@@ -23,7 +23,6 @@ export class BudgetPlannerComponent {
 
   changeTab(tab:string){
     this.chosenTab = tab;
-    this.calculateTotalSpent(tab);
   } 
 
   private tabCalculations: Record<string, () => number> = {
