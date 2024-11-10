@@ -6,21 +6,25 @@
         <p-button (click)="changeTab('Total')" class="opt-btn" label="Total"></p-button>
     </div>
     <div class="budget-area">
-        <div *ngIf="chosenTab=='Needs'">
-            <p-inputNumber [(ngModel)]="rent" (ngModelChange)="calculateTotalSpent()" placeholder="Rent" ></p-inputNumber>
-            <p-inputNumber [(ngModel)]="groceries" (ngModelChange)="calculateTotalSpent()" placeholder="Groceries" ></p-inputNumber>
+        <div class="opt-tab" *ngIf="chosenTab=='Needs'">
+            <p-inputNumber [(ngModel)]="rent" (ngModelChange)="calculateTotalSpent('Needs')" placeholder="Rent" ></p-inputNumber>
+            <p-inputNumber [(ngModel)]="groceries" (ngModelChange)="calculateTotalSpent('Needs')" placeholder="Groceries" ></p-inputNumber>
         </div>
-        <div *ngIf="chosenTab=='Wants'">
-            <p-inputNumber placeholder="Shopping" [(ngModel)]="shopping"></p-inputNumber>
-            <p-inputNumber placeholder="Travel" [(ngModel)]="travel"></p-inputNumber>
+        <div class="opt-tab" *ngIf="chosenTab=='Wants'">
+            <p-inputNumber placeholder="Shopping" [(ngModel)]="shopping" (ngModelChange)="calculateTotalSpent('Wants')"></p-inputNumber>
+            <p-inputNumber placeholder="Travel" [(ngModel)]="travel" (ngModelChange)="calculateTotalSpent('Wants')"></p-inputNumber>
         </div>
-        <div *ngIf="chosenTab=='Savings'">
-            savings
+        <div class="opt-tab" *ngIf="chosenTab=='Savings'">
+            <p-inputNumber placeholder="Education Savings" [(ngModel)]="education" (ngModelChange)="calculateTotalSpent('Savings')"></p-inputNumber>
+            <p-inputNumber placeholder="Emergency Savings" [(ngModel)]="emergency" (ngModelChange)="calculateTotalSpent('Savings')"></p-inputNumber>
         </div>
         <div *ngIf="chosenTab=='Total'">
             total
         </div>
-        <p-button *ngIf="chosenTab !='Total'" label=" Save {{chosenTab}}"></p-button>
-        <span> Total spent on {{chosenTab}} is {{totalSpent}} $ </span>
+        <div *ngIf="chosenTab !='Total'" class="result">
+            <p-button  label=" Save {{chosenTab}}"></p-button>
+            <span> Total spent on {{chosenTab}} is {{totalSpent}} $ </span>
+        </div>
+        
     </div>
 </div>
