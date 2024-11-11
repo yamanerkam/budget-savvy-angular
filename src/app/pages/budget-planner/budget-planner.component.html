@@ -18,12 +18,17 @@
             <p-inputNumber placeholder="Education Savings" [(ngModel)]="education" (ngModelChange)="calculateTotalSpent('Savings')"></p-inputNumber>
             <p-inputNumber placeholder="Emergency Savings" [(ngModel)]="emergency" (ngModelChange)="calculateTotalSpent('Savings')"></p-inputNumber>
         </div>
-        <div *ngIf="chosenTab=='Total'">
+        <div class="total-amounts" *ngIf="chosenTab=='Total'">
             <span> Total spent is {{totalSpent}} $ </span>
+            <span> Total spent on Needs is {{needsTotal}} $ </span>
+            <span> Total spent on Wants is {{wantsTotal}} $ </span>
+            <span> Total spent on Savings is {{savingsTotal}} $ </span>
         </div>
         <div *ngIf="chosenTab !='Total'" class="result">
-            <p-button  label=" Save {{chosenTab}}"></p-button>
+            <p-button (onClick)="saveTab(chosenTab)"  label=" Save {{chosenTab}}"></p-button>
             <span> Total spent on {{chosenTab}} is {{totalSpent}} $ </span>
+            
+
         </div>
         
     </div>

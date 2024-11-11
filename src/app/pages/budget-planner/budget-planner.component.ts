@@ -4,6 +4,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+
+type TabName = 'Needs' | 'Wants' | 'Savings' | 'Total';
+type TotalProperty = 'needsTotal' | 'wantsTotal' | 'savingsTotal' | 'totalSpent';
+
 @Component({
   selector: 'app-budget-planner',
   standalone: true,
@@ -11,8 +15,9 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './budget-planner.component.html',
   styleUrl: './budget-planner.component.css'
 })
+
 export class BudgetPlannerComponent {
-  chosenTab : string = 'Needs';
+  chosenTab : TabName = 'Needs';
   rent? : number;
   groceries? : number;
   shopping? : number;
@@ -20,22 +25,43 @@ export class BudgetPlannerComponent {
   education? : number;
   emergency? : number;
   totalSpent: number = 0;
+  needsTotal?: number = 0;
+  wantsTotal?: number = 0;
+  savingsTotal?: number = 0;
+  
 
-  changeTab(tab:string){
+  changeTab(tab:TabName){
     this.chosenTab = tab;
     this.calculateTotalSpent(tab);
   } 
 
-  private tabCalculations: Record<string, () => number> = {
+  private tabCalculations: Record<TabName, () => number> = {
     Needs: () => (this.rent ?? 0) + (this.groceries ?? 0),
     Wants: () => (this.shopping ?? 0) + (this.travel ?? 0),
     Savings: () => (this.education ?? 0) + (this.emergency ?? 0),
     Total: () => (this.rent ?? 0) + (this.groceries ?? 0) + (this.shopping ?? 0) + (this.travel ?? 0) + (this.education ?? 0) + (this.emergency ?? 0)
   };
 
-  calculateTotalSpent(tab: string) {
+  calculateTotalSpent(tab: TabName) {
     const calculate = this.tabCalculations[tab];
     this.totalSpent = calculate ? calculate() : 0;
   }
+
+  private tabTotals: Record<TabName, TotalProperty> = {
+    Needs: 'needsTotal',
+    Wants: 'wantsTotal',
+    Savings: 'savingsTotal',
+    Total:'totalSpent'
+  };
+  
+  saveTab(tab: TabName) {
+    const calculate = this.tabCalculations[tab];
+    const totalProperty = this.tabTotals[tab];
+  
+    if (calculate && totalProperty) {
+        this[totalProperty] = calculate();
+    }
+  }
+
   
 }

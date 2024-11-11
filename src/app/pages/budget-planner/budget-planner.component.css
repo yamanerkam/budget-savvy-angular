@@ -42,3 +42,16 @@
     align-items: center;
     gap: 5px;
 }
+
+.total-amounts {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.total-amounts span {
+    padding: 5px;
+    background-color: azure;
+    color: black;
+    width: fit-content;
+}
