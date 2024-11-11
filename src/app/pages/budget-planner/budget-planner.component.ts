@@ -42,11 +42,10 @@ export class BudgetPlannerComponent {
     Total: () => (this.needsTotal ?? 0) + (this.wantsTotal ?? 0) + (this.savingsTotal ?? 0)
   };
 
-  private tabReset: Record<TabName, () => number> = {
+  private tabReset: Partial<Record<TabName, () => number>> = {
     Needs: () => (this.rent = 0) + (this.groceries = 0),
     Wants: () => (this.shopping = 0) + (this.travel = 0),
     Savings: () => (this.education = 0) + (this.emergency = 0),
-    Total: () => (this.rent = 0) + (this.groceries = 0) + (this.shopping = 0) + (this.travel = 0) + (this.education = 0) + (this.emergency = 0)
   };
 
   private tabTotals: Record<TabName, TotalProperty> = {
@@ -67,8 +66,11 @@ export class BudgetPlannerComponent {
     const reset = this.tabReset[tab]; 
     
     this[totalProperty] = calculate();
-    reset()
 
+    if (reset) {
+      reset();
+    }
+    
     this.totalSpent = 0;
   }
 
