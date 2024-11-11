@@ -39,13 +39,15 @@ export class BudgetPlannerComponent {
     Needs: () => (this.rent ?? 0) + (this.groceries ?? 0),
     Wants: () => (this.shopping ?? 0) + (this.travel ?? 0),
     Savings: () => (this.education ?? 0) + (this.emergency ?? 0),
-    Total: () => (this.rent ?? 0) + (this.groceries ?? 0) + (this.shopping ?? 0) + (this.travel ?? 0) + (this.education ?? 0) + (this.emergency ?? 0)
+    Total: () => (this.needsTotal ?? 0) + (this.wantsTotal ?? 0) + (this.savingsTotal ?? 0)
   };
 
-  calculateTotalSpent(tab: TabName) {
-    const calculate = this.tabCalculations[tab];
-    this.totalSpent = calculate ? calculate() : 0;
-  }
+  private tabReset: Record<TabName, () => number> = {
+    Needs: () => (this.rent = 0) + (this.groceries = 0),
+    Wants: () => (this.shopping = 0) + (this.travel = 0),
+    Savings: () => (this.education = 0) + (this.emergency = 0),
+    Total: () => (this.rent = 0) + (this.groceries = 0) + (this.shopping = 0) + (this.travel = 0) + (this.education = 0) + (this.emergency = 0)
+  };
 
   private tabTotals: Record<TabName, TotalProperty> = {
     Needs: 'needsTotal',
@@ -53,14 +55,21 @@ export class BudgetPlannerComponent {
     Savings: 'savingsTotal',
     Total:'totalSpent'
   };
-  
+
+  calculateTotalSpent(tab: TabName) {
+    const calculate = this.tabCalculations[tab];
+    this.totalSpent = calculate ? calculate() : 0;
+  }
+
   saveTab(tab: TabName) {
     const calculate = this.tabCalculations[tab];
     const totalProperty = this.tabTotals[tab];
-  
-    if (calculate && totalProperty) {
-        this[totalProperty] = calculate();
-    }
+    const reset = this.tabReset[tab]; 
+    
+    this[totalProperty] = calculate();
+    reset()
+
+    this.totalSpent = 0;
   }
 
   
